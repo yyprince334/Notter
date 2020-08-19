@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="msharedViewModel"
+            type="com.example.notter.fragment.SharedViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:id="@+id/listLayout"
+        tools:context=".fragment.list.ListFragment">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="8dp"
+            android:clipToPadding="false"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:navigateToAddFragment="@{true}"
+            android:background="@drawable/circle"
+            android:src="@drawable/ic_baseline_add_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:id="@+id/no_data_imageView"
+            android:layout_width="156dp"
+            android:layout_height="133dp"
+            android:src="@drawable/data"
+            android:visibility="invisible"
+            android:contentDescription="No data"
+            android:emptyDatabase="@{msharedViewModel.emptyDatabase}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.389" />
+
+        <TextView
+            android:id="@+id/no_data_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/no_data"
+            android:visibility="invisible"
+            android:emptyDatabase="@{msharedViewModel.emptyDatabase}"
+            android:fontFamily="@font/montserrat"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:alpha="0.5"
+            app:layout_constraintEnd_toEndOf="@+id/no_data_imageView"
+            app:layout_constraintStart_toStartOf="@+id/no_data_imageView"
+            app:layout_constraintTop_toBottomOf="@+id/no_data_imageView" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
