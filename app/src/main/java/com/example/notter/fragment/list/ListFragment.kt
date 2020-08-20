@@ -18,6 +18,7 @@ import com.example.notter.adapter.ListAdapter
 import com.example.notter.data.models.NotterData
 import com.example.notter.data.viewModel.NotterViewModel
 import com.example.notter.databinding.FragmentListBinding
+import com.example.notter.utils.hideKeyboard
 import com.google.android.material.snackbar.Snackbar
 import jp.wasabeef.recyclerview.animators.LandingAnimator
 import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
@@ -47,6 +48,8 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener{
 
         setUpRecyclerView()
 
+
+
         mNotterViewModel.getAllData.observe(viewLifecycleOwner, Observer { data ->
             mSharedViewModel.checkIfDatabaseEmpty(data)
             adapter.setData(data)
@@ -54,6 +57,9 @@ class ListFragment : Fragment(), SearchView.OnQueryTextListener{
 
 
         setHasOptionsMenu(true)
+
+        //hide the keyboard
+        hideKeyboard(requireActivity())
 
         return binding.root
 
